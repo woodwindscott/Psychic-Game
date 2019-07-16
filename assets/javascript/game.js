@@ -40,8 +40,11 @@ document.onkeyup = function(event) {
 
     displayWins();
     displayLosses();
-    
+
     var targetGuessSoFar = document.getElementById("guessed");
+    var newSpan = document.createElement("span");
+    newSpan.textContent = userGuess + ", ";
+    targetGuessSoFar.appendChild(newSpan);
 
     //Error checking - make sure they select a letter
     if (userGuessCode >= 65 && userGuessCode <= 90) {
@@ -55,31 +58,16 @@ document.onkeyup = function(event) {
             newComputerGuess();
             displayGuessesLeft();
 
-            var newSpan = document.createElement("span");
-            newSpan.textContent = userGuess + ", ";
-            targetGuessSoFar.appendChild(newSpan);
-
             alert(userGuess + " is correct!");
 
             resetGuesses();
             displayWins();
 
-        //If guessed incorrectly and there are guesses remaining...
-        } else if (userGuess !== computerGuess && guessesLeft > 0) {
-          
-            var newSpan = document.createElement("span");
-            newSpan.textContent = userGuess + ", ";
-            targetGuessSoFar.appendChild(newSpan);
-
         //No more guesses remaining.  You lose.
-        } else {
+        } else if (userGuess !== computerGuess && guessesLeft === 0) {
             losses++;
             guessesLeft = 9;
 
-            var newSpan = document.createElement("span");
-            newSpan.textContent = userGuess + ", ";
-            targetGuessSoFar.appendChild(newSpan);
-            
             alert("The computer guessed " + computerGuess + ". Try again.")
 
             newComputerGuess();
