@@ -41,15 +41,15 @@ document.onkeyup = function(event) {
     displayWins();
     displayLosses();
 
-    var targetGuessSoFar = document.getElementById("guessed");
-    var newSpan = document.createElement("span");
-    newSpan.textContent = userGuess + ", ";
-    targetGuessSoFar.appendChild(newSpan);
-
     //Error checking - make sure they select a letter
     if (userGuessCode >= 65 && userGuessCode <= 90) {
         guessesLeft--;
         displayGuessesLeft();
+
+        var targetGuessSoFar = document.getElementById("guessed");
+        var newSpan = document.createElement("span");
+        newSpan.textContent = userGuess + ", ";
+        targetGuessSoFar.appendChild(newSpan);
 
         //If guessed correctly...
         if (userGuess === computerGuess && guessesLeft >= 0) {
