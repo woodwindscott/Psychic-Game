@@ -59,7 +59,7 @@ document.onkeyup = function(event) {
             displayGuessesLeft();
 
             alert(userGuess + " is correct!");
-
+            
             resetGuesses();
             displayWins();
 
